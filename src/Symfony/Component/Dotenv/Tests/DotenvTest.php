@@ -152,6 +152,10 @@ class DotenvTest extends TestCase
             ['export FOO=bar', ['FOO' => 'bar']],
             ['  export   FOO=bar', ['FOO' => 'bar']],
 
+            // leading underscore
+            ['_FOO=bar', ['_FOO' => 'bar']],
+            ["_FOO=foo\n_BAR=bar", ['_FOO' => 'foo', '_BAR' => 'bar']],
+
             // variable expansion
             ["FOO=BAR\nBAR=\$FOO", ['FOO' => 'BAR', 'BAR' => 'BAR']],
             ["FOO=BAR\nBAR=\"\$FOO\"", ['FOO' => 'BAR', 'BAR' => 'BAR']],
